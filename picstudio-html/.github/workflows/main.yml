@@ -17,4 +17,4 @@ jobs:
                 aws-region: us-east-1
 
             - name: push to AWS s3 Bucket
-              run: aws s3 sync s3://aws-s3-bucket-shu-website-2022
+              run: aws s3 sync . s3://aws-s3-bucket-shu-website-2022
