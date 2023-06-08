@@ -1,0 +1,20 @@
+name: static website hosting to S3 bucket
+
+on: [push]
+
+jobs:
+    deploy-to-s3:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repositry Code
+              uses: actions/checkout@v3
+
+            - name: AWS Credentail
+              uses: aws-actions/configure-aws-credentials@v2
+              with:
+                aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                aws-region: us-east-1
+
+            - name: push to AWS s3 Bucket
+              run: aws s3 sync . s3://aws-s3-bucket-shu-website-2022
